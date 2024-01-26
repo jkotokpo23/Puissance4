@@ -115,4 +115,16 @@ public class testSolvers {
         assertTrue(durationAB <= durationN);         // Duration
         assertTrue(nbNodeAB <= nbNodeN);             // Explored node
     }
+
+    @Test
+    public void testScoreOfEachColumn(){
+        sequence = "75671334317317336771215665546";
+        int[] predictedResult = {-6, -6, 0, -4, -6, -6, 0};
+        int[] tab = new int[7];
+        tableau.play(sequence); 
+        score = solver.solveNegamaxWT(tableau,tab);
+        for(int i = 0; i < 7; i++){
+            assertEquals(tab[i], predictedResult[i]);
+        }
+    }
 }

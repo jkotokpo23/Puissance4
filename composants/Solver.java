@@ -11,9 +11,14 @@ public class Solver {
         return negamax(P);
     }
 
+    public int solveNegamaxWT(Position P, int[] tab) {
+        nodeCount = 0;
+        return negamaxWithBoard(P, tab);
+    }
+
     public int solveAlphaBeta(Position P) {
         nodeCount = 0;
-        return alpha_beta(P,-42,42);
+        return alpha_beta(P, -42,42);
     }
 
     public int alpha_beta(Position P, int alpha, int beta) {
@@ -60,6 +65,32 @@ public class Solver {
                 Position P2 = Position.copy(P);
                 P2.play(x);
                 int score = -negamax(P2);
+                if (score > bestScore) bestScore = score;
+            }
+
+        return bestScore;
+    }
+
+    private int negamaxWithBoard(Position P, int[] tab) {
+        nodeCount++;
+
+        if (P.nbMoves() == Position.WIDTH * Position.HEIGHT) // Vérifier le match nul.
+            return 0;
+
+        for (int x = 0; x < Position.WIDTH; x++)
+            if (P.canPlay(x) && P.isWinningMove(x)){
+                tab[x] = (Position.WIDTH * Position.HEIGHT + 1 - P.nbMoves()) / 2;
+                return (Position.WIDTH * Position.HEIGHT + 1 - P.nbMoves()) / 2;
+            }    
+
+        int bestScore = -Position.WIDTH * Position.HEIGHT;
+
+        for (int x = 0; x < Position.WIDTH; x++) 
+            if (P.canPlay(x)) {
+                Position P2 = Position.copy(P);
+                P2.play(x);
+                int score = -negamax(P2);
+                tab[x] = score;
                 if (score > bestScore) bestScore = score;
             }
 
