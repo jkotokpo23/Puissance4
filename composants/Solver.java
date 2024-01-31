@@ -73,7 +73,6 @@ public class Solver {
 
     private int negamaxWithBoard(Position P, int[] tab) {
         nodeCount++;
-
         if (P.nbMoves() == Position.WIDTH * Position.HEIGHT) // Vérifier le match nul.
             return 0;
 
@@ -84,12 +83,13 @@ public class Solver {
             }    
 
         int bestScore = -Position.WIDTH * Position.HEIGHT;
-
+        
         for (int x = 0; x < Position.WIDTH; x++) 
             if (P.canPlay(x)) {
                 Position P2 = Position.copy(P);
                 P2.play(x);
-                int score = -negamax(P2);
+                int score = -negamaxWithBoard(P2, tab);
+                
                 tab[x] = score;
                 if (score > bestScore) bestScore = score;
             }
