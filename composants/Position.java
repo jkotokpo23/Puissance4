@@ -4,6 +4,7 @@ public class Position {
 
     public static final int WIDTH = 7;  // Largeur du plateau
     public static final int HEIGHT = 6; // Hauteur du plateau
+    public static final int WORSTSCORE = -45; // Score le plus bas (Le plus bas c'est -42 donc un entier inferieur à -42 fera l'affaire)
 
     private int[][] board;        // 0 si la cellule est vide, 1 pour le premier joueur et 2 pour le second joueur.
     private int[] height;         // Nombre de jetons par colonne
