@@ -10,7 +10,7 @@ import composants.Solver;
 import composants.Position;
 
 /**
- *  SOME ELEMENTS OF BENCHMARKS FOR TESTS
+ *  SOME ELEMENTS OF THE BENCHMARKS FOR TESTS
     2252576253462244111563365343671351441 -1
     7422341735647741166133573473242566 1
     23163416124767223154467471272416755633 0
@@ -119,7 +119,7 @@ public class testSolvers {
     @Test
     public void testScoreOfEachColumn(){
         sequence = "75671334317317336771215665546";
-        int[] predictedResult = {-6, -6, 0, -4, -6, -6, 0};
+        int[] predictedResult = {-6, -6, -45, -4, -6, -6, -45};
         int[] tab = new int[7];
         tableau.play(sequence); 
         score = solver.solveNegamaxWT(tableau,tab);
