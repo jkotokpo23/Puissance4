@@ -22,10 +22,25 @@ public class Solver {
         return tab;
     }
 
+    @SuppressWarnings("unused")
+    private int[] copyTab(int[] tab){
+        int [] tabR = new int[7];
+        for(int i = 0; i < Position.WIDTH; i++){
+            tabR[i] = tab[i];
+        }
+        return tab;
+    }
+
     public int solveNegamaxWT(Position P, int[] tab) {
         nodeCount = 0;
         tab = initTab(tab);
         return negamaxWithBoard(P, tab);
+    }
+
+    public int solveAlphBetaWT(Position P, int[] tab) {
+        nodeCount = 0;
+        tab = initTab(tab);
+        return alpha_beta_withBoard(P,-42, 42, tab);
     }
 
     public int solveAlphaBeta(Position P) {
@@ -59,6 +74,51 @@ public class Solver {
             }
         return alpha;
     }
+
+    private int alpha_beta_withBoard(Position P, int alpha, int beta, int tab[]) {
+        
+        nodeCount++;
+        
+        if(P.nbMoves() == Position.WIDTH * Position.HEIGHT)
+            return 0;
+
+        for(int x = 0; x < Position.WIDTH; x++)
+            if(P.canPlay(x) && P.isWinningMove(x)){
+                tab[x] = (Position.WIDTH * Position.HEIGHT + 1 - P.nbMoves()) / 2;
+                return (Position.WIDTH * Position.HEIGHT + 1 - P.nbMoves()) / 2;
+            }
+
+        int max = (Position.WIDTH * Position.HEIGHT - 1 - P.nbMoves()) / 2;
+        if(beta > max) {
+            beta = max;
+            if(alpha >= beta) {
+                return beta;
+            }
+        }
+
+        for(int x = 0; x < Position.WIDTH; x++)
+            if(P.canPlay(x)) {
+                Position P2 = Position.copy(P);
+                P2.play(x);
+                int score = -alpha_beta_withBoard(P2, -beta, -alpha, initTab(new int[Position.WIDTH]));
+               
+                tab[x] = score;
+
+                if(score >= beta){
+                    tab[x] = score;
+                    return score;
+                } 
+                if(score > alpha) {
+                    tab[x] = score;
+                    alpha = score;
+                }
+            }
+        int maxColumnScore = Arrays.stream(tab).max().orElseThrow(NoSuchElementException::new);
+        System.out.println(maxColumnScore);
+
+        return alpha;
+    }
+
 
     private int negamax(Position P) {
         nodeCount++;
