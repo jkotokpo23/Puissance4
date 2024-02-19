@@ -17,7 +17,7 @@ public class PositionID {
         this.moves = 0;
     }
 
-     public static PositionID copy(PositionID p) {
+    public static PositionID copy(PositionID p) {
         PositionID pos = new PositionID();
         pos.current_position = p.current_position;
         pos.mask = p.mask;

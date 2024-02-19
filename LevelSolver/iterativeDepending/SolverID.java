@@ -105,11 +105,6 @@ public class SolverID {
             l++;
         }
     }
-
-    private static long getTimeMicrosec() {
-        long now = System.currentTimeMillis() * 1000L;
-        return now;
-    }
 }
 
 
