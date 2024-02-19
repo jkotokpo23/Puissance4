@@ -1,4 +1,4 @@
-package LevelSolver.Bitboard;
+package levelSolver.bitboard;
 
 
 public class SolverBitboard {
@@ -71,7 +71,7 @@ public class SolverBitboard {
                 long startTime = System.nanoTime();
                 int score = solver.solve(P, weak);
                 long endTime = System.nanoTime();
-                System.out.println(line + " Score :" + score + "; Nb noeuds : " + solver.getNodeCount() + "; Temps : " + (endTime - startTime));
+                System.out.println(line + " Score :" + score + "; Nb noeuds : " + solver.getNodeCount() + "; Temps : " + (endTime - startTime) / 1000);
             }
             l++;
         }
