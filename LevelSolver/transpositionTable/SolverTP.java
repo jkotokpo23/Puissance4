@@ -1,7 +1,5 @@
 package levelSolver.transpositionTable;
 
-import java.util.Arrays;
-
 public class SolverTP {
 
     private long nodeCount; // counter of explored nodes.
