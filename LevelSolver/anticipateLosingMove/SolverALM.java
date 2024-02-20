@@ -9,8 +9,8 @@ public class SolverALM {
     private TranspositionTableALM transTable;
 
     private int negamax(PositionALM P, int alpha, int beta) {
-        assert alpha < beta;
-        assert !P.canWinNext();
+        assert (alpha < beta);
+        assert (!P.canWinNext());
 
         nodeCount++;
 
