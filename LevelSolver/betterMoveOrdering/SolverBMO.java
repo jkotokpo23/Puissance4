@@ -6,28 +6,39 @@ public class SolverBMO {
     private long nodeCount;
     private int[] columnOrder;
     private TranspositionTableBMO transTable;
+
     private int negamax(PositionBMO P, int alpha, int beta) {
         assert alpha < beta;
         assert !P.canWinNext();
+        
         nodeCount++;
+        
         long next = P.possibleNonLosingMoves();
+        
         if (next == 0)
             return -(PositionBMO.WIDTH * PositionBMO.HEIGHT - P.nbMoves()) / 2;
+        
         if (P.nbMoves() >= PositionBMO.WIDTH * PositionBMO.HEIGHT - 2)
             return 0;
+        
         int min = -(PositionBMO.WIDTH * PositionBMO.HEIGHT - 2 - P.nbMoves()) / 2;
+        
         if (alpha < min) {
             alpha = min;
             if (alpha >= beta) return alpha;
         }
+
         int max = (PositionBMO.WIDTH * PositionBMO.HEIGHT - 1 - P.nbMoves()) / 2;
         int val = transTable.get(P.key());
+        
         if (val != 0)
             max = val + PositionBMO.MIN_SCORE - 1;
-        if (beta > max) {
+        
+            if (beta > max) {
             beta = max;
             if (alpha >= beta) return beta;
         }
+        
         MoveSorter moves = new MoveSorter();
         for (int i = PositionBMO.WIDTH - 1; i >= 0; i--) {
             long move = next & PositionBMO.columnMask(columnOrder[i]);
@@ -47,6 +58,7 @@ public class SolverBMO {
         transTable.put(P.key(), (byte)(alpha - PositionBMO.MIN_SCORE + 1));
         return alpha;
     }
+    
     public int solve(PositionBMO P, boolean weak) {
         if (P.canWinNext())
             return (PositionBMO.WIDTH * PositionBMO.HEIGHT + 1 - P.nbMoves()) / 2;
@@ -66,6 +78,7 @@ public class SolverBMO {
         }
         return min;
     }
+    
     public long getNodeCount() {
         return nodeCount;
     }
@@ -91,7 +104,7 @@ public class SolverBMO {
 
         int lineNumber = 1;
             
-        String line = "624261";
+        String line = "76325166734314";
         PositionBMO P = new PositionBMO();
         int playedMoves = P.play(line);
         if (playedMoves != line.length()) {

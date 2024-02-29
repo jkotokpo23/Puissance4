@@ -1,7 +1,5 @@
 package levelSolver.anticipateLosingMove;
 
-import levelSolver.iterativeDepending.PositionID;
-
 public class PositionALM {
     public static final int WIDTH = 7;  // width of the board
     public static final int HEIGHT = 6; // height of the board
