@@ -1,4 +1,4 @@
-package levelSolver.bitboard;
+package levelSolver.Bitboard;
 
  public class PositionBitboard {
     public static final int WIDTH = 7;  // width of the board

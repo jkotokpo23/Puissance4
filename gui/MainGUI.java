@@ -7,7 +7,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import engine.map.Map;
+import composants.Tableau;
 import config.GameConfiguration;
 
 
@@ -18,8 +18,7 @@ public class MainGUI extends JFrame implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Map map;
-
+	private Tableau tableau;
 	private GameDisplay dashboard;
 
 	private OperationZonePanel operationZonePanel;
@@ -35,8 +34,8 @@ public class MainGUI extends JFrame implements Runnable {
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout(0,20));
 
-		map = new Map();
-		dashboard = new GameDisplay(map);
+		tableau = new Tableau();
+		dashboard = new GameDisplay(tableau);
 		operationZonePanel = new OperationZonePanel();
 
 		operationZonePanel.setPreferredSize(new Dimension(GameConfiguration.WINDOW_WIDTH,50));
@@ -64,7 +63,7 @@ public class MainGUI extends JFrame implements Runnable {
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
 			}
-			dashboard.repaint();
+			//dashboard.repaint();
 		}
 	}
 

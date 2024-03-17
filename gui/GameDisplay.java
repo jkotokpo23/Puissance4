@@ -7,29 +7,24 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import engine.map.Map;
+import composants.Tableau;
 // import composants.Pion;
 
 public class GameDisplay extends JPanel {
 	
     private static final long serialVersionUID = 1L;
     
-    private Map map;
+    private Tableau tableau;
 	private PaintStrategy paintStrategy = new PaintStrategy();
 
-    public GameDisplay(Map map){
-        this.map = map;
-        // setLayout(new GridLayout(1,7,5,0));
-        
-		// setBackground(Color.WHITE);
+    public GameDisplay(Tableau tableau){
+        this.tableau = tableau;
     }
 
 	@Override
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
-		paintStrategy.paint(map, g);
-		// paintStrategy.paint(pion, g);
+		paintStrategy.paint(tableau, g);
 	}
     
 }

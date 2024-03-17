@@ -1,4 +1,4 @@
-package levelSolver.moveExplorationOrder;
+package levelSolver.MoveExplorationOrder;
 
 import java.util.Scanner;
 import composants.Position;
