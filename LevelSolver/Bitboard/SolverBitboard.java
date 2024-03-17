@@ -1,4 +1,4 @@
-package levelSolver.bitboard;
+package levelSolver.Bitboard;
 
 
 public class SolverBitboard {

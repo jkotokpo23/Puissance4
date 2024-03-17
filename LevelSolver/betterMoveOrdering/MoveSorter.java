@@ -1,7 +1,6 @@
 package levelSolver.betterMoveOrdering;
 
 
-
 public class MoveSorter {
     private static final int WIDTH = 7; // Assume Position has a WIDTH field
 

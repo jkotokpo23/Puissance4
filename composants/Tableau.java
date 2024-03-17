@@ -7,14 +7,13 @@ public class Tableau {
     private static char vide = 'x';
     private static char joueur1 = '0';
     private static char joueur2 = '1';
-    private Pion pion = new Pion(0, 0, vide);
     
     private Pion[][] table = new Pion[DIMX][DIMY];
 
     public Tableau(){
         for(int i = 0; i < DIMY; i++ ){
             for(int j = 0; j < DIMX; j++){
-                table[j][i] = pion;
+                table[j][i] = new Pion(0, 0, vide);
             }
         }
     }
@@ -23,6 +22,10 @@ public class Tableau {
         return table;
     }
 
+	public Pion getPion(int line, int column) {
+		return table[line][column];
+	}
+    
     public boolean firstPlayer(int colonne){
         int row = 0;
         while(row < DIMY && table[colonne][row].getCouleur() != vide){
