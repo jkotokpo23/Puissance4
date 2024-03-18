@@ -7,7 +7,7 @@ public class TestGUI {
 
 	public static void main(String[] args) {
 
-		MainGUI gameMainGUI = new MainGUI("Demo Dressage");
+		MainGUI gameMainGUI = new MainGUI();
 
 		Thread gameThread = new Thread(gameMainGUI);
 

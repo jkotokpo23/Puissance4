@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import composants.Tableau;
 import config.GameConfiguration;
+import process.Manager;
 
 
 /**
@@ -20,13 +21,14 @@ public class MainGUI extends JFrame implements Runnable {
 
 	private Tableau tableau;
 	private GameDisplay dashboard;
+	private Manager manager;
 
 	private OperationZonePanel operationZonePanel;
 
 	private final static Dimension preferredSize = new Dimension(GameConfiguration.WINDOW_WIDTH, GameConfiguration.WINDOW_HEIGHT);
 
-	public MainGUI(String title) {
-		super(title);
+	public MainGUI() {
+		super("Puissance 4");
 		init();
 	}
 
@@ -35,8 +37,9 @@ public class MainGUI extends JFrame implements Runnable {
 		contentPane.setLayout(new BorderLayout(0,20));
 
 		tableau = new Tableau();
+		manager = new Manager(tableau);
 		dashboard = new GameDisplay(tableau);
-		operationZonePanel = new OperationZonePanel();
+		operationZonePanel = new OperationZonePanel(manager);
 
 		operationZonePanel.setPreferredSize(new Dimension(GameConfiguration.WINDOW_WIDTH,50));
 		dashboard.setPreferredSize(new Dimension(GameConfiguration.WINDOW_WIDTH,685));
@@ -56,14 +59,14 @@ public class MainGUI extends JFrame implements Runnable {
 	@Override
 	public void run() {
 		
-		while (true) {
+		while (!manager.fin()) {
 			
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
 			}
-			//dashboard.repaint();
+			dashboard.repaint();
 		}
 	}
 

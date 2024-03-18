@@ -8,12 +8,12 @@ public class Tableau {
     private static char joueur1 = '0';
     private static char joueur2 = '1';
     
-    private Pion[][] table = new Pion[DIMX][DIMY];
+    private Pion[][] table = new Pion[DIMY][DIMX];
 
     public Tableau(){
         for(int i = 0; i < DIMY; i++ ){
             for(int j = 0; j < DIMX; j++){
-                table[j][i] = new Pion(0, 0, vide);
+                table[i][j] = new Pion(j, i, vide);
             }
         }
     }
@@ -26,6 +26,41 @@ public class Tableau {
 		return table[line][column];
 	}
     
+    public Pion lastPion(int j){
+        Pion pion,next;
+        int i=0;
+        pion=table[i][j];
+        if(pion.getCouleur()==vide){
+            next=table[i+1][j];
+            while(i<5 && next.getCouleur()==vide){
+                pion=table[i][j];
+                next=table[i+1][j];
+                i++;
+            }
+            if(next.getCouleur()==vide){
+               return next; 
+            }
+        }
+        return pion;
+    }
+
+    public void posePion(int j, int joueur){
+        Pion pion = lastPion(j);
+        int i = pion.getY();
+        if(joueur==1){
+            table[i][j].setCouleur(joueur1);
+        }
+        else {
+            table[i][j].setCouleur(joueur2);
+        }
+    }
+
+    public boolean colPleine(int colonne){
+        Pion pion = table[0][colonne];
+        return pion.getCouleur()!=vide;
+    }
+
+
     public boolean firstPlayer(int colonne){
         int row = 0;
         while(row < DIMY && table[colonne][row].getCouleur() != vide){

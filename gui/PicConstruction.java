@@ -24,7 +24,7 @@ public class PicConstruction {
 
 	public static BufferedImage player2() {
 		try {
-			pic=ImageIO.read(new File("./gui/pictures/player1.png"));
+			pic=ImageIO.read(new File("./gui/pictures/player2.png"));
 		
 		} catch (IOException e) {
 			e.printStackTrace();
