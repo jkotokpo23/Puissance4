@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "game/libs/apiguardian-api-1.1.2.jar",
+        "game/libs/junit-jupiter-api-5.10.2.jar",
+        "game/libs/junit-platform-commons-1.10.2.jar",
+        "game/libs/lombok.jar",
+        "game/libs/opentest4j-1.3.0.jar"
+    ]
+}
