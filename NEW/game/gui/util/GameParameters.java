@@ -1,10 +1,10 @@
-package game.gui.util;
+package gui.util;
 
-import game.engine.enumeration.AiType;
-import game.engine.enumeration.GameMode;
-import game.engine.util.Constants;
-import game.gui.enumeration.Color;
-import game.gui.enumeration.GuiStyle;
+import engine.enumeration.AiType;
+import engine.enumeration.GameMode;
+import engine.util.Constants;
+import gui.enumeration.Color;
+import gui.enumeration.GuiStyle;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

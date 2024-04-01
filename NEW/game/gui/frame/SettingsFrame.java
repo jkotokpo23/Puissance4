@@ -1,11 +1,11 @@
-package game.gui.frame;
+package gui.frame;
 
 
-import game.engine.enumeration.AiType;
-import game.engine.enumeration.GameMode;
-import game.gui.enumeration.Color;
-import game.gui.enumeration.GuiStyle;
-import game.gui.util.GameParameters;
+import engine.enumeration.AiType;
+import engine.enumeration.GameMode;
+import gui.enumeration.Color;
+import gui.enumeration.GuiStyle;
+import gui.util.GameParameters;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,20 +1,20 @@
-package game.gui;
+package gui;
 
-import game.engine.ai.AI;
-import game.engine.ai.MinimaxAI;
-import game.engine.ai.MinimaxAlphaBetaPruningAI;
-import game.engine.ai.RandomChoiceAI;
-import game.engine.board.Board;
-import game.engine.board.Move;
-import game.engine.enumeration.AiType;
-import game.engine.enumeration.GameMode;
-import game.engine.util.Constants;
-import game.gui.enumeration.Color;
-import game.gui.enumeration.GuiStyle;
-import game.gui.frame.InsertCheckerFrame;
-import game.gui.frame.SettingsFrame;
-import game.gui.util.GameParameters;
-import game.gui.util.GuiConstants;
+import engine.ai.AI;
+import engine.ai.MinimaxAI;
+import engine.ai.MinimaxAlphaBetaPruningAI;
+import engine.ai.RandomChoiceAI;
+import engine.board.Board;
+import engine.board.Move;
+import engine.enumeration.AiType;
+import engine.enumeration.GameMode;
+import engine.util.Constants;
+import gui.enumeration.Color;
+import gui.enumeration.GuiStyle;
+import gui.frame.InsertCheckerFrame;
+import gui.frame.SettingsFrame;
+import gui.util.GameParameters;
+import gui.util.GuiConstants;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -34,10 +34,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Stack;
 
-import static game.engine.util.Constants.CONNECT_4_CHECKERS_IN_A_ROW;
-import static game.gui.util.GuiConstants.CONNECT_4_TITLE;
-import static game.gui.util.GuiConstants.DEFAULT_CONNECT_4_HEIGHT;
-import static game.gui.util.GuiConstants.DEFAULT_CONNECT_4_WIDTH;
+import static engine.util.Constants.CONNECT_4_CHECKERS_IN_A_ROW;
+import static gui.util.GuiConstants.CONNECT_4_TITLE;
+import static gui.util.GuiConstants.DEFAULT_CONNECT_4_HEIGHT;
+import static gui.util.GuiConstants.DEFAULT_CONNECT_4_WIDTH;
 
 public class GUI extends JFrame {
 

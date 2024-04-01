@@ -1,7 +1,7 @@
-package game.engine.board;
+package engine.board;
 
 
-import game.engine.util.Constants;
+import engine.util.Constants;
 import lombok.Getter;
 import lombok.Setter;
 

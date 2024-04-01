@@ -7,8 +7,8 @@ public class PositionOPT {
     public static final int MIN_SCORE = -(WIDTH * HEIGHT) / 2 + 3;
     public static final int MAX_SCORE = (WIDTH * HEIGHT + 1) / 2 - 3;
 
-    static final int bottom(int width, int height) {
-        return width == 0 ? 0 : bottom(width - 1, height) | 1 << (width - 1) * (height + 1);
+    static final long bottom(int width, int height) {
+        return width == 0 ? 0 : bottom(width - 1, height) | 1L << (width - 1) * (height + 1);
     }
 
     private long current_position;
@@ -40,7 +40,7 @@ public class PositionOPT {
     }
 
     public boolean canWinNext() {
-        return (winningPosition() & possible()) != 0;
+        return ((winningPosition() & possible()) != 0);
     }
 
     public int nbMoves() {

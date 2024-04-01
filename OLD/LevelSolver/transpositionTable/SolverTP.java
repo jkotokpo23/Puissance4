@@ -100,7 +100,7 @@ public class SolverTP {
                 long start_time = System.nanoTime();
                 int score = solver.solve(P, weak);
                 long end_time = System.nanoTime();
-                System.out.println(line + " Score :" + score + "; Nb noeuds : " + solver.getNodeCount() + "; Temps " + (end_time - start_time) / 1000);
+                System.out.println(line + " Score :" + score + "; Nb noeuds : " + solver.getNodeCount() + "; Temps " + (end_time - start_time) / 1000000);
             }
             l++;
         }

@@ -1,5 +1,4 @@
 {
-    "java.project.sourcePaths": [],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "game/libs/apiguardian-api-1.1.2.jar",

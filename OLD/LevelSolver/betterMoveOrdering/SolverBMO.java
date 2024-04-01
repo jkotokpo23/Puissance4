@@ -104,7 +104,7 @@ public class SolverBMO {
 
         int lineNumber = 1;
             
-        String line = "76325166734314";
+        String line = "6133112551";
         PositionBMO P = new PositionBMO();
         int playedMoves = P.play(line);
         if (playedMoves != line.length()) {

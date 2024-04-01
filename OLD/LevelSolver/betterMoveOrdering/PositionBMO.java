@@ -66,21 +66,17 @@ public class PositionBMO {
         return (winningPosition() & possible()) != 0;
     }
 
-    public long possibleNonLosingMoves() {
+   public long possibleNonLosingMoves() {
         assert !canWinNext();
         long possibleMask = possible();
         long opponentWin = opponentWinningPosition();
         long forcedMoves = possibleMask & opponentWin;
-    
         if (forcedMoves != 0) {
-            if ((forcedMoves & (forcedMoves - 1)) != 0) {
-                return 0; // L'adversaire a deux mouvements gagnants et vous ne pouvez pas l'arrêter
-            } else {
-                possibleMask = forcedMoves; // Forcer à jouer le seul mouvement forcé
-            }
+            if ((forcedMoves & (forcedMoves - 1)) != 0) // check if there is more than one forced move
+                return 0;                           // the opponent has two winning moves and you cannot stop him
+            else possibleMask = forcedMoves;    // enforce playing the single forced move
         }
-    
-        return possibleMask & ~(opponentWin >> 1); // Éviter de jouer en dessous d'une position gagnante de l'adversaire
+        return possibleMask & ~(opponentWin >> 1);  // avoid playing below an opponent winning spot
     }
     
     public int moveScore(long move) {

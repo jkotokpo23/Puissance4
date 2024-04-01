@@ -1,8 +1,8 @@
-package game.gui.frame;
+package gui.frame;
 
 
-import game.engine.util.Constants;
-import game.gui.GUI;
+import engine.util.Constants;
+import gui.GUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

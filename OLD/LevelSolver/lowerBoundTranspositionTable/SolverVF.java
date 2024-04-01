@@ -1,16 +1,16 @@
 package levelSolver.lowerBoundTranspositionTable;
 
+
 public class SolverVF {
 
     private long nodeCount; // counter of explored nodes.
     private int[] columnOrder; // column exploration order
 
     private TranspositionTableVF transTable = new TranspositionTableVF(
-            PositionVF.WIDTH * (PositionVF.HEIGHT + 1),
-            (int) (Math.log(PositionVF.MAX_SCORE - PositionVF.MIN_SCORE + 1) / Math.log(2) + 2),
-            23
-    ); // log2 of size of transPositionVF table
-
+        (PositionVF.WIDTH * (PositionVF.HEIGHT + 1)),
+        (int)(Math.log(PositionVF.MAX_SCORE - PositionVF.MIN_SCORE + 1 + 2) / Math.log(2)),
+        23);
+             
     private int negamax(PositionVF P, int alpha, int beta) {
         assert (alpha < beta);
         assert (!P.canWinNext());
@@ -37,11 +37,10 @@ public class SolverVF {
         }
 
         long key = P.key();
-        int val = (int) transTable.get(key);
-        //long val = transTable.get(key);
+        int val = transTable.get(key);
         if (val != 0) {
             if (val > PositionVF.MAX_SCORE - PositionVF.MIN_SCORE + 1) { 
-                min = (int) (val + 2 * PositionVF.MIN_SCORE - PositionVF.MAX_SCORE - 2);
+                min = (val + 2 * PositionVF.MIN_SCORE - PositionVF.MAX_SCORE - 2);
                 if (alpha < min) {
                     alpha = min;                     
                     if (alpha >= beta) return alpha;  
@@ -64,21 +63,22 @@ public class SolverVF {
             }
         }
 
-        while (true) {
-            long next = moves.getNext();
-            if (next == 0) break;
+        long next = moves.getNext();
+        while (next != 0) {
             PositionVF P2 = PositionVF.copy(P);
             P2.play(next); 
             int score = -negamax(P2, -beta, -alpha); 
 
             if (score >= beta) {
-                transTable.put(key, score + PositionVF.MAX_SCORE - 2 * PositionVF.MIN_SCORE + 2); 
+                
+                transTable.put(key, (score + PositionVF.MAX_SCORE - (2 * PositionVF.MIN_SCORE) + 2));
                 return score; 
             }
             if (score > alpha) alpha = score; 
+            next = moves.getNext();
         }
 
-        transTable.put(key, (byte)(alpha - PositionVF.MIN_SCORE + 1)); // save the upper bound of the PositionVF
+        transTable.put(key, (alpha - PositionVF.MIN_SCORE + 1)); // save the upper bound of the PositionVF
         return alpha;
     }
 
@@ -107,10 +107,11 @@ public class SolverVF {
     public SolverVF() {
         reset();
         columnOrder = new int[PositionVF.WIDTH];
-        for (int i = 0; i < PositionVF.WIDTH; i++)
-            columnOrder[i] = PositionVF.WIDTH / 2 + (1 - 2 * (i % 2)) * (i + 1) / 2;
+        for(int i = 0; i < PositionVF.WIDTH; i++)
+            columnOrder[i] = PositionVF.WIDTH/2 + (1-2*(i%2))*(i+1)/2;
         // initialize the column exploration order, starting with center columns
         // example for WIDTH=7: columnOrder = {3, 4, 2, 5, 1, 6, 0}
+        
     }
 
     public long getNodeCount() {

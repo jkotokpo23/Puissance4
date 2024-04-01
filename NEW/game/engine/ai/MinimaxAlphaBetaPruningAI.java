@@ -1,9 +1,9 @@
-package game.engine.ai;
+package engine.ai;
 
 
-import game.engine.board.Board;
-import game.engine.board.Move;
-import game.engine.util.Constants;
+import engine.board.Board;
+import engine.board.Move;
+import engine.util.Constants;
 
 import java.util.ArrayList;
 import java.util.Random;

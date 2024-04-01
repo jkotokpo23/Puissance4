@@ -1,7 +1,7 @@
-package game.engine.ai;
+package engine.ai;
 
-import game.engine.board.Board;
-import game.engine.board.Move;
+import engine.board.Board;
+import engine.board.Move;
 import lombok.Getter;
 import lombok.Setter;
 

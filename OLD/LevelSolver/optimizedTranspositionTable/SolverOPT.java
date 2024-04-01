@@ -97,7 +97,7 @@ public class SolverOPT {
                 if (score > alpha) alpha = score;
             }
 
-            transTable.put(P.key(), (byte)(alpha - PositionOPT.MIN_SCORE + 1));
+            transTable.put(P.key(), (alpha - PositionOPT.MIN_SCORE + 1));
             return alpha;
         }
 

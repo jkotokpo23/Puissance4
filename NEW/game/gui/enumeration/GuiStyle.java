@@ -1,4 +1,4 @@
-package game.gui.enumeration;
+package gui.enumeration;
 
 public enum GuiStyle {
 	CROSS_PLATFORM,

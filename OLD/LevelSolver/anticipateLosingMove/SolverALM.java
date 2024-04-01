@@ -29,7 +29,7 @@ public class SolverALM {
         }
 
         int max = (PositionALM.WIDTH * PositionALM.HEIGHT - 1 - P.nbMoves()) / 2;
-        int val = transTable.get(P.key());
+        byte val = transTable.get(P.key());
         if (val != 0)
             max = val + PositionALM.MIN_SCORE - 1;
 
@@ -122,7 +122,7 @@ public class SolverALM {
                 long startTime = System.nanoTime();
                 int score = solver.solve(P, weak);
                 long endTime = System.nanoTime();
-                System.out.println(line + " Scrore : " + score + " ; Nb noeud : " + solver.getNodeCount() + " ; Temps : " + (endTime - startTime) / 1000);
+                System.out.println(line + " Scrore : " + score + " ; Nb noeud : " + solver.getNodeCount() + " ; Temps : " + (endTime - startTime) / 1000000);
             }
             l++;
         }

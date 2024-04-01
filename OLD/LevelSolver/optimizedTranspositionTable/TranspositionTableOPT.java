@@ -5,16 +5,16 @@ public class TranspositionTableOPT {
 
     private static final int key_size = 64;  // Set the desired key size
     private static final int value_size = 64; // Set the desired value size
-    private static final int log_size = 6;    // Set the desired log size
+    private static final int log_size = 64;    // Set the desired log size
 
     private static final int size = (int) nextPrime(1 << log_size); // size of the transition table
 
     private long[] K; // Array to store keys
-    private long[] V; // Array to store values
+    private int[] V; // Array to store values
 
     TranspositionTableOPT() {
         K = new long[size];
-        V = new long[size];
+        V = new int[size];
         reset();
     }
 
@@ -54,7 +54,7 @@ public class TranspositionTableOPT {
      * @param key:   must be less than key_size bits.
      * @param value: must be less than value_size bits. null (0) value is used to encode missing data
      */
-    void put(long key, long value) {
+    void put(long key, int value) {
         assert (key >> key_size == 0);
         assert (value >> value_size == 0);
         int pos = index(key);

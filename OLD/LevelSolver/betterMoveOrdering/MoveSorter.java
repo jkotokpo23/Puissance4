@@ -18,7 +18,7 @@ public class MoveSorter {
      */
     public void add(long move, int score) {
         int pos = size++;
-        for (; pos > 0 && entries[pos - 1].score > score; --pos) {
+        for (; pos != 0 && entries[pos - 1].score > score; --pos) {
             entries[pos] = entries[pos - 1];
         }
         entries[pos] = new Entry();

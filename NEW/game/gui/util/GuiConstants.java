@@ -1,4 +1,4 @@
-package game.gui.util;
+package gui.util;
 
 
 import lombok.AccessLevel;

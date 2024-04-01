@@ -6,8 +6,8 @@ public class PositionALM {
     public static final int MIN_SCORE = -(WIDTH * HEIGHT) / 2 + 3;
     public static final int MAX_SCORE = (WIDTH * (HEIGHT + 1)) / 2 - 3;
 
-    private static final int bottomMask = (int)bottom(WIDTH, HEIGHT);
-    private static final int boardMask = (int)(bottomMask * ((1L << HEIGHT) - 1));
+    private static final long bottomMask = bottom(WIDTH, HEIGHT);
+    private static final long boardMask = (bottomMask * ((1L << HEIGHT) - 1));
 
     private long currentPosition;
     private long mask;
@@ -71,7 +71,7 @@ public class PositionALM {
         long opponentWin = opponentWinningPosition();
         long forcedMoves = possibleMask & opponentWin;
         if (forcedMoves != 0) {
-            if (forcedMoves != 0 & (forcedMoves - 1) != 0) // check if there is more than one forced move
+            if ((forcedMoves & (forcedMoves - 1)) != 0) // check if there is more than one forced move
                 return 0;                           // the opponent has two winning moves and you cannot stop him
             else possibleMask = forcedMoves;    // enforce playing the single forced move
         }
@@ -105,7 +105,8 @@ public class PositionALM {
      * @return true if the current player makes an alignment by playing the corresponding column col.
      */
     private boolean isWinningMove(int col) {
-        return winningPosition() != 0 & possible() != 0 & columnMask(col) != 0;
+        long res = winningPosition() & possible() & columnMask(col);
+        return res != 0;
     }
 
     /*

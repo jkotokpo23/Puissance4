@@ -1,4 +1,4 @@
-package game.engine.board;
+package engine.board;
 
 
 import lombok.Getter;

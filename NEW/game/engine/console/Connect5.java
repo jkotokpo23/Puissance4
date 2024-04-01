@@ -1,11 +1,11 @@
-package game.engine.console;
+package engine.console;
 
 
-import game.engine.ai.AI;
-import game.engine.ai.MinimaxAI;
-import game.engine.board.Board;
-import game.engine.board.Move;
-import game.engine.util.Constants;
+import engine.ai.AI;
+import engine.ai.MinimaxAI;
+import engine.board.Board;
+import engine.board.Move;
+import engine.util.Constants;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
